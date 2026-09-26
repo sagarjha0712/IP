@@ -3,142 +3,738 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Sagar Jha | IT Engineering Student</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #0b0f19;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        /* NAVBAR */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 18px 8%;
+            background: rgba(11, 15, 25, 0.9);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid #222838;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #4f9cff;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            color: #ddd;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #4f9cff;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 120px 8% 60px;
+            background:
+                radial-gradient(circle at 80% 30%, #17345e 0%, transparent 30%),
+                #0b0f19;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 8px 15px;
+            border: 1px solid #315a8c;
+            border-radius: 30px;
+            color: #70b2ff;
+            margin-bottom: 20px;
+            background: rgba(79, 156, 255, 0.08);
+        }
+
+        h1 {
+            font-size: clamp(45px, 8vw, 85px);
+            line-height: 1.05;
+            margin-bottom: 20px;
+        }
+
+        h1 span {
+            color: #4f9cff;
+        }
+
+        .hero p {
+            color: #aeb7c8;
+            font-size: 20px;
+            max-width: 650px;
+            margin-bottom: 30px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 13px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+            display: inline-block;
+        }
+
+        .primary {
+            background: #4f9cff;
+            color: white;
+        }
+
+        .primary:hover {
+            background: #287fe8;
+            transform: translateY(-2px);
+        }
+
+        .secondary {
+            border: 1px solid #394355;
+            color: white;
+        }
+
+        .secondary:hover {
+            border-color: #4f9cff;
+            color: #4f9cff;
+        }
+
+        /* COMMON */
+        section {
+            padding: 90px 8%;
+        }
+
+        .section-title {
+            font-size: 38px;
+            margin-bottom: 12px;
+        }
+
+        .section-title span {
+            color: #4f9cff;
+        }
+
+        .section-subtitle {
+            color: #8994a8;
+            margin-bottom: 40px;
+        }
+
+        /* ABOUT */
+        .about {
+            background: #0f1420;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text p {
+            color: #b6bfce;
+            margin-bottom: 15px;
+        }
+
+        .info-card {
+            background: #151b29;
+            border: 1px solid #252d3d;
+            padding: 30px;
+            border-radius: 15px;
+        }
+
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 14px 0;
+            border-bottom: 1px solid #272f3e;
+        }
+
+        .info-item:last-child {
+            border-bottom: none;
+        }
+
+        .info-item span:first-child {
+            color: #7e8a9e;
+        }
+
+        /* SKILLS */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .skill-card {
+            background: #151b29;
+            border: 1px solid #252d3d;
+            padding: 25px;
+            border-radius: 15px;
+            transition: 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            border-color: #4f9cff;
+        }
+
+        .skill-card h3 {
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+
+        .skill-card p {
+            color: #8f9bad;
+        }
+
+        /* PROJECTS */
+        .projects {
+            background: #0f1420;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .project-card {
+            padding: 30px;
+            background: #151b29;
+            border: 1px solid #252d3d;
+            border-radius: 15px;
+        }
+
+        .project-number {
+            color: #4f9cff;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .project-card h3 {
+            font-size: 23px;
+            margin-bottom: 12px;
+        }
+
+        .project-card p {
+            color: #929caf;
+        }
+
+        .tech {
+            margin-top: 20px;
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .tech span {
+            background: #202838;
+            color: #9fcaff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 13px;
+        }
+
+        /* EDUCATION */
+        .education-card {
+            max-width: 800px;
+            background: #151b29;
+            border-left: 4px solid #4f9cff;
+            padding: 30px;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .education-card h3 {
+            font-size: 24px;
+        }
+
+        .education-card .college {
+            color: #4f9cff;
+            margin: 5px 0;
+        }
+
+        .education-card p {
+            color: #909bad;
+        }
+
+        /* CONTACT */
+        .contact {
+            text-align: center;
+        }
+
+        .contact p {
+            color: #929caf;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        .socials {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .socials a {
+            text-decoration: none;
+            color: white;
+            border: 1px solid #30394b;
+            padding: 12px 20px;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        .socials a:hover {
+            border-color: #4f9cff;
+            color: #4f9cff;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: #687386;
+            border-top: 1px solid #202735;
+        }
+
+        /* MOBILE */
+        @media (max-width: 768px) {
+
+            nav {
+                padding: 15px 5%;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            section {
+                padding: 70px 6%;
+            }
+
+            .hero {
+                padding: 120px 6% 70px;
+            }
+
+            .about-grid,
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 52px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-    <header>
-        <h1>Sagar Jha</h1>
-        <p>Information Technology Engineering Student</p>
-        <p>Thakur College of Engineering and Technology (TCET)</p>
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="logo">Sagar<span>.</span></div>
 
-        <nav>
-            <a href="#about">About</a> |
-            <a href="#skills">Skills</a> |
-            <a href="#projects">Projects</a> |
-            <a href="#education">Education</a> |
-            <a href="#contact">Contact</a>
-        </nav>
-    </header>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
 
-    <hr>
 
-    <main>
+    <!-- HERO -->
+    <section class="hero" id="home">
 
-        <section id="about">
-            <h2>About Me</h2>
+        <div class="hero-content">
+
+            <div class="tag">Information Technology Student</div>
+
+            <h1>
+                Hi, I'm <span>Sagar Jha</span>
+            </h1>
+
             <p>
-                Hello! I am Sagar Jha, a first-year Information Technology
-                engineering student at Thakur College of Engineering and
-                Technology. I am interested in programming, Data Structures
-                and Algorithms, Artificial Intelligence, Cloud Computing,
-                and building practical technology projects.
+                First-year Information Technology engineering student
+                interested in programming, Data Structures & Algorithms,
+                cloud computing, AI and building practical projects.
             </p>
-        </section>
 
-        <section id="skills">
-            <h2>Skills</h2>
+            <div class="buttons">
+                <a href="#projects" class="btn primary">
+                    View Projects
+                </a>
 
-            <ul>
-                <li>C++</li>
-                <li>C Programming</li>
-                <li>Python</li>
-                <li>Data Structures and Algorithms</li>
-                <li>DBMS & SQL</li>
-                <li>AWS Cloud</li>
-                <li>Git & GitHub</li>
-                <li>Artificial Intelligence</li>
-            </ul>
-        </section>
+                <a href="#contact" class="btn secondary">
+                    Contact Me
+                </a>
+            </div>
 
-        <section id="projects">
-            <h2>Projects</h2>
+        </div>
 
-            <article>
-                <h3>Farmer Rover</h3>
+    </section>
+
+
+    <!-- ABOUT -->
+    <section class="about" id="about">
+
+        <h2 class="section-title">About <span>Me</span></h2>
+
+        <p class="section-subtitle">
+            A little about my journey
+        </p>
+
+        <div class="about-grid">
+
+            <div class="about-text">
+
                 <p>
-                    A prototype agricultural rover designed to monitor
-                    environmental and soil conditions using sensors and
-                    microcontrollers.
+                    I'm Sagar Jha, an Information Technology engineering
+                    student who is currently building a strong foundation
+                    in programming and computer science.
                 </p>
-            </article>
 
-            <article>
-                <h3>EcoPulse</h3>
                 <p>
-                    A sustainability-focused concept involving carbon
-                    calculation, green scoring, rewards, and a pathway
-                    toward reducing environmental impact.
+                    My current focus is on C++, Data Structures &
+                    Algorithms, Python, databases and cloud technologies.
                 </p>
-            </article>
 
-            <article>
-                <h3>AWS Cloud Projects</h3>
                 <p>
-                    Hands-on learning with AWS services including EC2,
-                    EBS volumes, and AWS Lambda.
+                    I enjoy learning by building projects and experimenting
+                    with new technologies.
                 </p>
-            </article>
-        </section>
 
-        <section id="education">
-            <h2>Education</h2>
+            </div>
 
-            <h3>B.E. in Information Technology</h3>
+            <div class="info-card">
+
+                <div class="info-item">
+                    <span>Name</span>
+                    <strong>Sagar Jha</strong>
+                </div>
+
+                <div class="info-item">
+                    <span>Field</span>
+                    <strong>Information Technology</strong>
+                </div>
+
+                <div class="info-item">
+                    <span>Year</span>
+                    <strong>First Year</strong>
+                </div>
+
+                <div class="info-item">
+                    <span>College</span>
+                    <strong>TCET</strong>
+                </div>
+
+                <div class="info-item">
+                    <span>Focus</span>
+                    <strong>Programming & DSA</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SKILLS -->
+    <section id="skills">
+
+        <h2 class="section-title">My <span>Skills</span></h2>
+
+        <p class="section-subtitle">
+            Technologies and areas I'm currently learning
+        </p>
+
+        <div class="skills-grid">
+
+            <div class="skill-card">
+                <h3>C++</h3>
+                <p>
+                    Fundamentals, problem solving, STL and
+                    Data Structures & Algorithms.
+                </p>
+            </div>
+
+            <div class="skill-card">
+                <h3>Python</h3>
+                <p>
+                    Python fundamentals and exploring its
+                    applications in automation and AI.
+                </p>
+            </div>
+
+            <div class="skill-card">
+                <h3>Data Structures</h3>
+                <p>
+                    Arrays, linked lists, stacks, queues,
+                    searching and sorting algorithms.
+                </p>
+            </div>
+
+            <div class="skill-card">
+                <h3>Database</h3>
+                <p>
+                    SQL, DBMS concepts, queries, joins
+                    and stored procedures.
+                </p>
+            </div>
+
+            <div class="skill-card">
+                <h3>AWS</h3>
+                <p>
+                    Exploring EC2, EBS, Lambda and
+                    fundamental cloud concepts.
+                </p>
+            </div>
+
+            <div class="skill-card">
+                <h3>Git & GitHub</h3>
+                <p>
+                    Learning version control and
+                    managing programming projects.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PROJECTS -->
+    <section class="projects" id="projects">
+
+        <h2 class="section-title">Featured <span>Projects</span></h2>
+
+        <p class="section-subtitle">
+            Some projects and ideas I've worked on
+        </p>
+
+        <div class="projects-grid">
+
+            <div class="project-card">
+
+                <div class="project-number">01 / DSA</div>
+
+                <h3>DSA Practice Programs</h3>
+
+                <p>
+                    Implementation of fundamental data structures
+                    and algorithms including linked lists, stacks,
+                    queues, searching and sorting.
+                </p>
+
+                <div class="tech">
+                    <span>C</span>
+                    <span>C++</span>
+                    <span>DSA</span>
+                </div>
+
+            </div>
+
+
+            <div class="project-card">
+
+                <div class="project-number">02 / CLOUD</div>
+
+                <h3>AWS Cloud Experiments</h3>
+
+                <p>
+                    Hands-on experiments with AWS services such as
+                    EC2, EBS volumes and AWS Lambda functions.
+                </p>
+
+                <div class="tech">
+                    <span>AWS</span>
+                    <span>EC2</span>
+                    <span>Lambda</span>
+                </div>
+
+            </div>
+
+
+            <div class="project-card">
+
+                <div class="project-number">03 / AI</div>
+
+                <h3>AI & Automation Exploration</h3>
+
+                <p>
+                    Exploring AI tools, automation workflows,
+                    LLMs and practical applications of AI.
+                </p>
+
+                <div class="tech">
+                    <span>AI</span>
+                    <span>Automation</span>
+                    <span>LLM</span>
+                </div>
+
+            </div>
+
+
+            <div class="project-card">
+
+                <div class="project-number">04 / IoT</div>
+
+                <h3>Smart Agriculture Rover</h3>
+
+                <p>
+                    Prototype rover designed for agricultural
+                    monitoring using sensors and microcontrollers.
+                </p>
+
+                <div class="tech">
+                    <span>Arduino</span>
+                    <span>Sensors</span>
+                    <span>IoT</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- EDUCATION -->
+    <section id="education">
+
+        <h2 class="section-title">My <span>Education</span></h2>
+
+        <p class="section-subtitle">
+            Academic background
+        </p>
+
+        <div class="education-card">
+
+            <h3>B.E. / B.Tech — Information Technology</h3>
+
+            <div class="college">
+                Thakur College of Engineering and Technology
+            </div>
+
             <p>
-                Thakur College of Engineering and Technology (TCET)
-            </p>
-            <p>
-                Currently pursuing first year of engineering.
-            </p>
-        </section>
-
-        <section id="goals">
-            <h2>Career Interests</h2>
-
-            <ul>
-                <li>Software Development</li>
-                <li>Artificial Intelligence & Machine Learning</li>
-                <li>Cloud Computing</li>
-                <li>Data Structures & Algorithms</li>
-                <li>Hackathons and Technical Projects</li>
-            </ul>
-        </section>
-
-        <section id="contact">
-            <h2>Contact</h2>
-
-            <p>
-                <strong>Name:</strong> Sagar Jha
+                First Year Engineering Student
             </p>
 
             <p>
-                <strong>College:</strong> Thakur College of Engineering and Technology
+                Currently developing foundations in programming,
+                mathematics, computer science and engineering.
             </p>
 
-            <p>
-                <strong>Field:</strong> Information Technology
-            </p>
+        </div>
 
-            <p>
-                <strong>LinkedIn:</strong>
-                <a href="#" target="_blank">Add LinkedIn Profile</a>
-            </p>
+    </section>
 
-            <p>
-                <strong>GitHub:</strong>
-                <a href="#" target="_blank">Add GitHub Profile</a>
-            </p>
-        </section>
 
-    </main>
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
 
-    <hr>
+        <h2 class="section-title">
+            Let's <span>Connect</span>
+        </h2>
 
+        <p>
+            I'm always interested in learning, collaborating on
+            projects and connecting with fellow students and developers.
+        </p>
+
+        <div class="socials">
+
+            <!-- Replace these links with your actual profiles -->
+
+            <a href="https://github.com/" target="_blank">
+                GitHub
+            </a>
+
+            <a href="https://www.linkedin.com/" target="_blank">
+                LinkedIn
+            </a>
+
+            <a href="mailto:your-email@example.com">
+                Email
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
     <footer>
-        <p>&copy; 2026 Sagar Jha. All Rights Reserved.</p>
+        © 2026 Sagar Jha. Built with HTML & CSS.
     </footer>
+
+
+    <script>
+
+        // Simple scroll effect
+        document.querySelectorAll('nav a').forEach(link => {
+
+            link.addEventListener('click', function(e) {
+
+                e.preventDefault();
+
+                const target =
+                    document.querySelector(this.getAttribute('href'));
+
+                target.scrollIntoView({
+                    behavior: 'smooth'
+                });
+
+            });
+
+        });
+
+    </script>
 
 </body>
 </html>
